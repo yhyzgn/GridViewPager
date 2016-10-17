@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GridViewPager</string>
+    <string name="item_count_error">条目总数不能为0</string>
+</resources>

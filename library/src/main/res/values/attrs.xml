@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GridViewPager">
+        <attr name="page_size" format="integer" />
+        <attr name="num_columns" format="integer" />
+        <attr name="vertical_spacing" format="dimension" />
+        <attr name="horizontal_spacing" format="dimension" />
+        <attr name="scroll_bar_enable" format="boolean" />
+        <attr name="padding_top_bottom" format="dimension" />
+        <attr name="padding_left_right" format="dimension" />
+    </declare-styleable>
+</resources>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.yhy.gvp.widget.GridViewPager
+        android:id="@+id/gvp_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:horizontal_spacing="2dp"
+        app:num_columns="4"
+        app:padding_left_right="2dp"
+        app:padding_top_bottom="2dp"
+        app:page_size="6"
+        app:vertical_spacing="2dp" />
+</LinearLayout>
