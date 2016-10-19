@@ -5,9 +5,11 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
 
 ### Eclipse
 
-> 下载项目，添加依赖
+> 下载项目，添加依赖；也可以直接引入`/GridViewPager/blirary/`目录下的`gvp.jar`
 
 ### Android Studio (Gradle)
+
+> 库依赖和jar包引用可参考Eclipse使用方式，如果使用Gradle依赖的话请参考下面第一、二步
 
 * 第一步，在Project的`builder.gradle`中添加以下代码
 
