@@ -70,7 +70,7 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
       R.drawable.ee, R.drawable.ff};
     ```
 
-  * 也可以不在这里配置相关参数，在代码中配置给`Config`类（务必在设置适配器前配置）
+  * 也可以不在布局文件中配置相关参数，而在代码中配置给`Config`类（务必在设置适配器前配置）
 
     ```java
     //向单例模式配置类中设置参数
@@ -141,6 +141,7 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long
                                    id) {
       ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被长按");
+      //以下操作只是为了展示notifyDataSetChanged()的用法
       int size = Config.getInstance().getPageSize();
       if (size < Config.getInstance().getItemCount()) {
         //改变数据并刷新适配器
