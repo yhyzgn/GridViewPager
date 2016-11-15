@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="E:\Android Studio\GridViewPager\app\src\main\assets"/><source path="E:\Android Studio\GridViewPager\app\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\Android Studio\GridViewPager\app\src\debug\assets"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AS Space\Demo\gvp\src\main\assets"/><source path="E:\AS Space\Demo\gvp\build\generated\assets\shaders\debug"/></dataSet><dataSet config="debug"><source path="E:\AS Space\Demo\gvp\src\debug\assets"/></dataSet></merger>

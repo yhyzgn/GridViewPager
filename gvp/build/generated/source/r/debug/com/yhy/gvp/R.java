@@ -18,7 +18,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int horizontal_spacing=0x7f010003;
+        public static int horizontal_spacing=0x7f010003;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -26,7 +26,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int num_columns=0x7f010001;
+        public static int num_columns=0x7f010001;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -36,7 +36,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int padding_left_right=0x7f010006;
+        public static int padding_left_right=0x7f010006;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -46,7 +46,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int padding_top_bottom=0x7f010005;
+        public static int padding_top_bottom=0x7f010005;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -54,7 +54,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int page_size=0x7f010000;
+        public static int page_size=0x7f010000;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -62,7 +62,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int scroll_bar_enable=0x7f010004;
+        public static int scroll_bar_enable=0x7f010004;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -72,68 +72,62 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int vertical_spacing=0x7f010002;
+        public static int vertical_spacing=0x7f010002;
     }
     public static final class color {
-        public static final int colorAccent=0x7f060000;
-        public static final int colorPrimary=0x7f060001;
-        public static final int colorPrimaryDark=0x7f060002;
+        public static int colorAccent=0x7f050000;
+        public static int colorPrimary=0x7f050001;
+        public static int colorPrimaryDark=0x7f050002;
     }
     public static final class dimen {
-        public static final int activity_horizontal_margin=0x7f050000;
-        public static final int activity_vertical_margin=0x7f050001;
+        public static int activity_horizontal_margin=0x7f040000;
+        public static int activity_vertical_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int a=0x7f020000;
-        public static final int aa=0x7f020001;
-        public static final int b=0x7f020002;
-        public static final int bb=0x7f020003;
-        public static final int c=0x7f020004;
-        public static final int cc=0x7f020005;
-        public static final int d=0x7f020006;
-        public static final int dd=0x7f020007;
-        public static final int e=0x7f020008;
-        public static final int ee=0x7f020009;
-        public static final int f=0x7f02000a;
-        public static final int ff=0x7f02000b;
-        public static final int g=0x7f02000c;
-        public static final int h=0x7f02000d;
-        public static final int i=0x7f02000e;
-        public static final int j=0x7f02000f;
-        public static final int k=0x7f020010;
-        public static final int l=0x7f020011;
-        public static final int m=0x7f020012;
-        public static final int n=0x7f020013;
-        public static final int o=0x7f020014;
-        public static final int p=0x7f020015;
-        public static final int q=0x7f020016;
-        public static final int r=0x7f020017;
-        public static final int s=0x7f020018;
-        public static final int t=0x7f020019;
-        public static final int u=0x7f02001a;
-        public static final int v=0x7f02001b;
-        public static final int w=0x7f02001c;
-        public static final int x=0x7f02001d;
-        public static final int y=0x7f02001e;
-        public static final int z=0x7f02001f;
-    }
-    public static final class id {
-        public static final int gvp_content=0x7f090000;
-    }
-    public static final class layout {
-        public static final int activity_main=0x7f040000;
+        public static int a=0x7f020000;
+        public static int aa=0x7f020001;
+        public static int b=0x7f020002;
+        public static int bb=0x7f020003;
+        public static int c=0x7f020004;
+        public static int cc=0x7f020005;
+        public static int d=0x7f020006;
+        public static int dd=0x7f020007;
+        public static int e=0x7f020008;
+        public static int ee=0x7f020009;
+        public static int f=0x7f02000a;
+        public static int ff=0x7f02000b;
+        public static int g=0x7f02000c;
+        public static int h=0x7f02000d;
+        public static int i=0x7f02000e;
+        public static int j=0x7f02000f;
+        public static int k=0x7f020010;
+        public static int l=0x7f020011;
+        public static int m=0x7f020012;
+        public static int n=0x7f020013;
+        public static int o=0x7f020014;
+        public static int p=0x7f020015;
+        public static int q=0x7f020016;
+        public static int r=0x7f020017;
+        public static int s=0x7f020018;
+        public static int t=0x7f020019;
+        public static int u=0x7f02001a;
+        public static int v=0x7f02001b;
+        public static int w=0x7f02001c;
+        public static int x=0x7f02001d;
+        public static int y=0x7f02001e;
+        public static int z=0x7f02001f;
     }
     public static final class mipmap {
-        public static final int ic_launcher=0x7f030000;
+        public static int ic_launcher=0x7f030000;
     }
     public static final class string {
-        public static final int app_name=0x7f070000;
-        public static final int item_count_error=0x7f070001;
+        public static int app_name=0x7f060000;
+        public static int item_count_error=0x7f060001;
     }
     public static final class style {
         /**  Customize your theme here. 
          */
-        public static final int AppTheme=0x7f080000;
+        public static int AppTheme=0x7f070000;
     }
     public static final class styleable {
         /** Attributes that can be used with a GridViewPager.
@@ -177,7 +171,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:horizontal_spacing
         */
-        public static final int GridViewPager_horizontal_spacing = 3;
+        public static int GridViewPager_horizontal_spacing = 3;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#num_columns}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -191,7 +185,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:num_columns
         */
-        public static final int GridViewPager_num_columns = 1;
+        public static int GridViewPager_num_columns = 1;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#padding_left_right}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -207,7 +201,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:padding_left_right
         */
-        public static final int GridViewPager_padding_left_right = 6;
+        public static int GridViewPager_padding_left_right = 6;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#padding_top_bottom}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -223,7 +217,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:padding_top_bottom
         */
-        public static final int GridViewPager_padding_top_bottom = 5;
+        public static int GridViewPager_padding_top_bottom = 5;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#page_size}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -237,7 +231,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:page_size
         */
-        public static final int GridViewPager_page_size = 0;
+        public static int GridViewPager_page_size = 0;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#scroll_bar_enable}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -251,7 +245,7 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:scroll_bar_enable
         */
-        public static final int GridViewPager_scroll_bar_enable = 4;
+        public static int GridViewPager_scroll_bar_enable = 4;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#vertical_spacing}
           attribute's value can be found in the {@link #GridViewPager} array.
@@ -267,6 +261,6 @@ theme attribute (in the form
 containing a value of this type.
           @attr name com.yhy.gvp:vertical_spacing
         */
-        public static final int GridViewPager_vertical_spacing = 2;
+        public static int GridViewPager_vertical_spacing = 2;
     };
 }

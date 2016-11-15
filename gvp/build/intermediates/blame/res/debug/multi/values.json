@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "E:\\Android Studio\\GridViewPager\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "E:\\AS Space\\Demo\\gvp\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 96
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 143
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -49,7 +49,7 @@
                     "endOffset": 194
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -68,7 +68,7 @@
                     "endOffset": 656
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\dimens.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -87,7 +87,7 @@
                     "endOffset": 712
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\dimens.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -106,7 +106,7 @@
                     "endOffset": 763
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 1,
                         "startColumn": 4,
@@ -125,7 +125,7 @@
                     "endOffset": 817
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -145,7 +145,7 @@
                     "endOffset": 950
                 },
                 "from": {
-                    "file": "E:\\Android Studio\\GridViewPager\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AS Space\\Demo\\gvp\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,

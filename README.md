@@ -5,11 +5,11 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
 
 ### Eclipse
 
-> 下载项目，添加依赖；也可以直接引入`/GridViewPager/blirary/`目录下的`gvp.jar`
+> 下载项目，添加依赖；也可以找到`/GridViewPager/gvp/`目录下的`gvp.aar`，解压引用里边的`classes.jar`库
 
 ### Android Studio (Gradle)
 
-> 库依赖和jar包引用可参考Eclipse使用方式，如果使用Gradle依赖的话请参考下面第一、二步
+> 库依赖和aar包引用可参考Eclipse使用方式，如果使用Gradle依赖的话请参考下面第一、二步
 
 * 第一步，在Project的`builder.gradle`中添加以下代码
 
@@ -27,7 +27,7 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
   ```groovy
   dependencies {
   	...
-  	compile 'com.github.SilentWolf1993:GridViewPager:v1.0'
+  	compile 'com.github.SilentWolf1993:GridViewPager:v1.1'
   }
   ```
 
@@ -131,15 +131,14 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
   ```java
   gvpContent.setOnItemClickListener(new GridViewPager.OnItemClickListener() {
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    public void onItemClick(AdapterView<?> parent, View view, int position) {
       ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被点击");
     }
   });
 
   gvpContent.setOnItemLongClickListener(new GridViewPager.OnItemLongClickListener() {
     @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long
-                                   id) {
+    public boolean onItemLongClick(AdapterView<?> parent, View view, int position) {
       ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被长按");
       //以下操作只是为了展示notifyDataSetChanged()的用法
       int size = Config.getInstance().getPageSize();
