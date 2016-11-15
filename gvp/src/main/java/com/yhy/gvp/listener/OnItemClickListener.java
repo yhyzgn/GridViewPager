@@ -8,5 +8,5 @@ import android.widget.AdapterView;
  * Created by Administrator on 2016/10/17.
  */
 public interface OnItemClickListener {
-    void onItemClick(AdapterView<?> parent, View view, int position, long id);
+    void onItemClick(AdapterView<?> parent, View view, int position);
 }

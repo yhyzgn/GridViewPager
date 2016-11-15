@@ -8,6 +8,5 @@ import android.widget.AdapterView;
  * Created by Administrator on 2016/10/17.
  */
 public interface OnItemLongClickListener {
-    boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-                            long id);
+    boolean onItemLongClick(AdapterView<?> parent, View view, int position);
 }

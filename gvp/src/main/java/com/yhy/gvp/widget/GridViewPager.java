@@ -2,7 +2,6 @@ package com.yhy.gvp.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
@@ -16,10 +15,10 @@ import android.widget.GridView;
 
 import com.yhy.gvp.R;
 import com.yhy.gvp.global.Config;
+import com.yhy.gvp.listener.OnItemClickListener;
+import com.yhy.gvp.listener.OnItemLongClickListener;
 import com.yhy.gvp.utils.DensityUtils;
 import com.yhy.gvp.utils.ToastUtils;
-
-import java.util.Random;
 
 /**
  * Created by Administrator on 2016/10/16.
@@ -30,7 +29,7 @@ public class GridViewPager extends ViewPager {
     //GridView布局参数
     private AbsListView.LayoutParams mParams;
     //总页数
-    private int mPageCoount;
+    private int mPageCount;
     //ViewPager的适配器对象
     private PageAdapter mPageAdapter;
     //点击事件
@@ -133,6 +132,11 @@ public class GridViewPager extends ViewPager {
         }
     }
 
+    //获取总页数
+    public int getPageCount() {
+        return mPageCount;
+    }
+
     /**
      * ViewPager的适配器
      */
@@ -148,10 +152,10 @@ public class GridViewPager extends ViewPager {
             int itemCount = Config.getInstance().getItemCount();
             int pageSize = Config.getInstance().getPageSize();
             //计算ViewPager的页数
-            mPageCoount = itemCount % pageSize == 0 ? itemCount / pageSize : itemCount /
+            mPageCount = itemCount % pageSize == 0 ? itemCount / pageSize : itemCount /
                     pageSize + 1;
-            Log.d(TAG, "共" + mPageCoount + "页");
-            return mPageCoount;
+            Log.d(TAG, "共" + mPageCount + "页");
+            return mPageCount;
         }
 
         @Override
@@ -196,7 +200,7 @@ public class GridViewPager extends ViewPager {
                 public void onItemClick(AdapterView<?> parent, View view, int index, long id) {
                     if (null != mItemClickListener) {
                         index += Config.getInstance().getPageSize() * position;
-                        mItemClickListener.onItemClick(parent, view, index, id);
+                        mItemClickListener.onItemClick(parent, view, index);
                     }
                 }
             });
@@ -207,7 +211,7 @@ public class GridViewPager extends ViewPager {
                                                long id) {
                     if (null != mItemLongClickListener) {
                         index += Config.getInstance().getPageSize() * position;
-                        return mItemLongClickListener.onItemLongClick(parent, view, index, id);
+                        return mItemLongClickListener.onItemLongClick(parent, view, index);
                     }
                     return false;
                 }
@@ -273,13 +277,13 @@ public class GridViewPager extends ViewPager {
         public int getCount() {
             //计算每个GridView中条目数量
             int count = Config.getInstance().getItemCount();
-            if (mIndex < mPageCoount - 1) {
+            if (mIndex < mPageCount - 1) {
                 //不是最后一页，按config中pageSize显示
                 count = Config.getInstance().getPageSize();
             } else {
                 //用总条目数量-已经显示的条目数量
                 //已经显示的条目数量=每页显示条目数量*已经显示的页数
-                count -= Config.getInstance().getPageSize() * (mPageCoount - 1);
+                count -= Config.getInstance().getPageSize() * (mPageCount - 1);
             }
             Log.d(TAG, "第" + mIndex + "页有" + count + "条数据");
             return count;
@@ -315,20 +319,5 @@ public class GridViewPager extends ViewPager {
         long getItemId(int position);
 
         View getView(int position, View convertView, ViewGroup parent);
-    }
-
-    /**
-     * 条目点击事件监听器
-     */
-    public interface OnItemClickListener {
-        void onItemClick(AdapterView<?> parent, View view, int position, long id);
-    }
-
-    /**
-     * 条目长按事件监听器
-     */
-    public interface OnItemLongClickListener {
-        boolean onItemLongClick(AdapterView<?> parent, View view, int position,
-                                long id);
     }
 }
