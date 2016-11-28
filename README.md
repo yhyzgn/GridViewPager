@@ -70,28 +70,6 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
       R.drawable.ee, R.drawable.ff};
     ```
 
-  * 也可以不在布局文件中配置相关参数，而在代码中配置给`Config`类（务必在设置适配器前配置）
-
-    ```java
-    //向单例模式配置类中设置参数
-    //如果在布局文件中页配置过相应参数的话，以这里的参数为准
-    Config.getInstance()
-          //条目总数，不设置时系统根据适配器getCount的返回值决定
-          .setItemCount(IMG_ARR.length)
-          //每页显示条目数量
-          .setPageSize(10)
-          //每页显示列数
-          .setNumColumns(4)
-          //条目垂直间距，单位dp
-          .setVerticalSpacing(4)
-          //条目水平间距单位dp
-          .setHorizontalSpacing(4)
-          //是否显示滚动条，默认为ture，即显示
-          .setScrollBarEnable(false)
-          //面板内边距，第一个值为上下边距，第二个值为左右边距
-          .setPadding(new int[]{4, 4});
-    ```
-
 * 第四步，在代码中通过`findViewById`获取到`GridViewPager`控件，设置适配器
 
   ```java
@@ -141,10 +119,10 @@ ViewPager中的GridView，可以自由定制Item布局，提供充足的自定�
     public boolean onItemLongClick(AdapterView<?> parent, View view, int position) {
       ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被长按");
       //以下操作只是为了展示notifyDataSetChanged()的用法
-      int size = Config.getInstance().getPageSize();
-      if (size < Config.getInstance().getItemCount()) {
+      int size = 4;
+      if (size < IMG_ARR.length) {
         //改变数据并刷新适配器
-        Config.getInstance().setPageSize(++size);
+        //...
       }
       gvpContent.notifyDataSetChanged();
       return false;

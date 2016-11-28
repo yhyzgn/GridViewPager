@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 
 import com.yhy.gvp.R;
-import com.yhy.gvp.global.Config;
+import com.yhy.gvp.adapter.GVPAdapter;
 import com.yhy.gvp.listener.OnItemClickListener;
 import com.yhy.gvp.listener.OnItemLongClickListener;
 import com.yhy.gvp.utils.DensityUtils;
@@ -26,6 +26,23 @@ import com.yhy.gvp.utils.ToastUtils;
 
 public class GridViewPager extends ViewPager {
     private static final String TAG = "GridViewPager";
+
+    //条目总数
+    private int itemCount;
+    //每页显示条目数量
+    private int pageSize = 4;
+    //每页列数
+    private int numColumns = 4;
+    //垂直方向的间距
+    private int verticalSpacing = 2;
+    //水平方向的间距
+    private int horizontalSpacing = 2;
+    //GridView是否可滚动
+    private boolean scrollBarEnable;
+    //上下边距
+    private int paddingTopBottom;
+    //左右边距
+    private int paddingLeftRight;
     //GridView布局参数
     private AbsListView.LayoutParams mParams;
     //总页数
@@ -52,33 +69,22 @@ public class GridViewPager extends ViewPager {
     private void init(Context context, AttributeSet attrs) {
         mParams = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView
                 .LayoutParams.MATCH_PARENT);
-        //给Config设置默认参数，避免其他地方调用时发生错误
-        Config.getInstance().setPageSize(4).setNumColumns(4).setVerticalSpacing
-                (2).setHorizontalSpacing(2);
         //如果attrs不为空，就从xml布局文件中获取自定义attrs参数
         if (null != attrs) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GridViewPager);
-            int pageSize = ta.getInteger(R.styleable.GridViewPager_page_size, 4);
-            int numColumns = ta.getInteger(R.styleable.GridViewPager_num_columns, 4);
-            int verticalSpacing = ta.getDimensionPixelSize(R.styleable
+            pageSize = ta.getInteger(R.styleable.GridViewPager_page_size, 4);
+            numColumns = ta.getInteger(R.styleable.GridViewPager_num_columns, 4);
+            verticalSpacing = ta.getDimensionPixelSize(R.styleable
                     .GridViewPager_vertical_spacing, 2);
-            int horizontalSpacing = ta.getDimensionPixelSize(R.styleable
+            horizontalSpacing = ta.getDimensionPixelSize(R.styleable
                     .GridViewPager_horizontal_spacing, 2);
-            boolean scrollBarEnable = ta.getBoolean(R.styleable.GridViewPager_scroll_bar_enable,
+            scrollBarEnable = ta.getBoolean(R.styleable.GridViewPager_scroll_bar_enable,
                     true);
-            int paddingTopBottom = ta.getDimensionPixelSize(R.styleable
+            paddingTopBottom = ta.getDimensionPixelSize(R.styleable
                     .GridViewPager_padding_top_bottom, 0);
-            int paddingLeftRight = ta.getDimensionPixelSize(R.styleable
+            paddingLeftRight = ta.getDimensionPixelSize(R.styleable
                     .GridViewPager_padding_left_right, 0);
             ta.recycle();
-            //在Config中设置相应参数
-            //由于getDimensionPixelSize返回的是px，而后面设置时统一按dp设置，所以这里需要将px转换为dp
-            Config.getInstance().setPageSize(pageSize).setNumColumns(numColumns)
-                    .setVerticalSpacing((int) DensityUtils.px2dp(context, verticalSpacing))
-                    .setHorizontalSpacing((int) DensityUtils.px2dp(context, horizontalSpacing))
-                    .setScrollBarEnable(scrollBarEnable)
-                    .setPadding(new int[]{(int) DensityUtils.px2dp(context, paddingTopBottom),
-                            (int) DensityUtils.px2dp(context, paddingLeftRight)});
         }
     }
 
@@ -91,11 +97,9 @@ public class GridViewPager extends ViewPager {
         if (null == adapter) {
             throw new IllegalArgumentException("适配器不能为空");
         }
-        //如果Config中的总条目数与GVPAdapter中的getCount返回结果不相等，就以getCount返回的结果为准
-        if (Config.getInstance().getItemCount() != adapter.getCount()) {
-            Config.getInstance().setItemCount(adapter.getCount());
-        }
-        if (Config.getInstance().getItemCount() <= 0) {
+        itemCount = adapter.getCount();
+
+        if (itemCount <= 0) {
             ToastUtils.toastShort(getContext(), R.string.item_count_error);
             return;
         }
@@ -132,6 +136,34 @@ public class GridViewPager extends ViewPager {
         }
     }
 
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public void setNumColumns(int numColumns) {
+        this.numColumns = numColumns;
+    }
+
+    public void setVerticalSpacing(int verticalSpacing) {
+        this.verticalSpacing = verticalSpacing;
+    }
+
+    public void setHorizontalSpacing(int horizontalSpacing) {
+        this.horizontalSpacing = horizontalSpacing;
+    }
+
+    public void setPaddingTopBottom(int paddingTopBottom) {
+        this.paddingTopBottom = paddingTopBottom;
+    }
+
+    public void setPaddingLeftRight(int paddingLeftRight) {
+        this.paddingLeftRight = paddingLeftRight;
+    }
+
+    public void setScrollBarEnable(boolean scrollBarEnable) {
+        this.scrollBarEnable = scrollBarEnable;
+    }
+
     //获取总页数
     public int getPageCount() {
         return mPageCount;
@@ -149,8 +181,6 @@ public class GridViewPager extends ViewPager {
 
         @Override
         public int getCount() {
-            int itemCount = Config.getInstance().getItemCount();
-            int pageSize = Config.getInstance().getPageSize();
             //计算ViewPager的页数
             mPageCount = itemCount % pageSize == 0 ? itemCount / pageSize : itemCount /
                     pageSize + 1;
@@ -169,25 +199,20 @@ public class GridViewPager extends ViewPager {
             //设置布局参数
             gv.setLayoutParams(mParams);
             //如果禁用了ScrollBar，就设置禁用，否则就保持默认
-            if (!Config.getInstance().isScrollBarEnable()) {
-                gv.setVerticalScrollBarEnabled(Config.getInstance().isScrollBarEnable());
+            if (!scrollBarEnable) {
+                gv.setVerticalScrollBarEnabled(scrollBarEnable);
             }
             //设置每行条目数量
-            gv.setNumColumns(Config.getInstance().getNumColumns());
+            gv.setNumColumns(numColumns);
             //设置每个GridView内边距
-            int[] padding = Config.getInstance().getPadding();
-            if (null != padding) {
-                gv.setPadding((int) DensityUtils.dp2px(getContext(), padding[1]),
-                        (int) DensityUtils.dp2px(getContext(), padding[0]),
-                        (int) DensityUtils.dp2px(getContext(), padding[1]),
-                        (int) DensityUtils.dp2px(getContext(), padding[0]));
-            }
+            gv.setPadding((int) DensityUtils.dp2px(getContext(), paddingLeftRight),
+                    (int) DensityUtils.dp2px(getContext(), paddingTopBottom),
+                    (int) DensityUtils.dp2px(getContext(), paddingLeftRight),
+                    (int) DensityUtils.dp2px(getContext(), paddingTopBottom));
             //设置垂直间距
-            gv.setVerticalSpacing((int) DensityUtils.dp2px(getContext(), Config.getInstance()
-                    .getVerticalSpacing()));
+            gv.setVerticalSpacing((int) DensityUtils.dp2px(getContext(), verticalSpacing));
             //设置水平间距(设置padding后该值可能无效)
-            gv.setHorizontalSpacing((int) DensityUtils.dp2px(getContext(), Config.getInstance()
-                    .getHorizontalSpacing()));
+            gv.setHorizontalSpacing((int) DensityUtils.dp2px(getContext(), horizontalSpacing));
             //将GrindView添加到container中
             container.addView(gv);
             //设置Tag，在getItemPosition中使用
@@ -199,7 +224,7 @@ public class GridViewPager extends ViewPager {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int index, long id) {
                     if (null != mItemClickListener) {
-                        index += Config.getInstance().getPageSize() * position;
+                        index += pageSize * position;
                         mItemClickListener.onItemClick(parent, view, index);
                     }
                 }
@@ -210,7 +235,7 @@ public class GridViewPager extends ViewPager {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int index,
                                                long id) {
                     if (null != mItemLongClickListener) {
-                        index += Config.getInstance().getPageSize() * position;
+                        index += pageSize * position;
                         return mItemLongClickListener.onItemLongClick(parent, view, index);
                     }
                     return false;
@@ -276,14 +301,14 @@ public class GridViewPager extends ViewPager {
         @Override
         public int getCount() {
             //计算每个GridView中条目数量
-            int count = Config.getInstance().getItemCount();
+            int count = itemCount;
             if (mIndex < mPageCount - 1) {
                 //不是最后一页，按config中pageSize显示
-                count = Config.getInstance().getPageSize();
+                count = pageSize;
             } else {
                 //用总条目数量-已经显示的条目数量
                 //已经显示的条目数量=每页显示条目数量*已经显示的页数
-                count -= Config.getInstance().getPageSize() * (mPageCount - 1);
+                count -= pageSize * (mPageCount - 1);
             }
             Log.d(TAG, "第" + mIndex + "页有" + count + "条数据");
             return count;
@@ -291,33 +316,17 @@ public class GridViewPager extends ViewPager {
 
         @Override
         public Object getItem(int index) {
-            return mAdapter.getItem(mIndex * Config.getInstance().getPageSize() + index);
+            return mAdapter.getItem(mIndex * pageSize + index);
         }
 
         @Override
         public long getItemId(int index) {
-            return mAdapter.getItemId(mIndex * Config.getInstance().getPageSize() +
-                    index);
+            return mAdapter.getItemId(mIndex * pageSize + index);
         }
 
         @Override
         public View getView(int index, View convertView, ViewGroup parent) {
-            return mAdapter.getView(mIndex * Config.getInstance().getPageSize() +
-                    index, convertView, parent);
-
+            return mAdapter.getView(mIndex * pageSize + index, convertView, parent);
         }
-    }
-
-    /**
-     * GridViewPager的适配器，对外用户接口
-     */
-    public interface GVPAdapter {
-        int getCount();
-
-        Object getItem(int position);
-
-        long getItemId(int position);
-
-        View getView(int position, View convertView, ViewGroup parent);
     }
 }
