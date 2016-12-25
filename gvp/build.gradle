@@ -41,10 +41,10 @@ dependencies {
 }
 
 publish {
-    userOrg = 'SilentWolf1993'
+    userOrg = 'yhyzgn'
     groupId = 'com.yhy'
     artifactId = 'gvp'
     publishVersion = '1.0.1'
-    desc = 'A component that ViewPager contains some GridView'
+    desc = 'A component that ViewPager contains some GridView, you can custom the Attributes what you need.'
     website = 'https://github.com/SilentWolf1993/GridViewPager'
 }
