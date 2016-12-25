@@ -18,12 +18,10 @@ import com.yhy.gvp.adapter.GVPAdapter;
 import com.yhy.gvp.listener.OnItemClickListener;
 import com.yhy.gvp.listener.OnItemLongClickListener;
 import com.yhy.gvp.utils.DensityUtils;
-import com.yhy.gvp.utils.ToastUtils;
 
 /**
  * Created by Administrator on 2016/10/16.
  */
-
 public class GridViewPager extends ViewPager {
     private static final String TAG = "GridViewPager";
 
@@ -39,10 +37,6 @@ public class GridViewPager extends ViewPager {
     private int horizontalSpacing = 2;
     //GridView是否可滚动
     private boolean scrollBarEnable;
-    //上下边距
-    private int paddingTopBottom;
-    //左右边距
-    private int paddingLeftRight;
     //GridView布局参数
     private AbsListView.LayoutParams mParams;
     //总页数
@@ -68,24 +62,38 @@ public class GridViewPager extends ViewPager {
      */
     private void init(Context context, AttributeSet attrs) {
         mParams = new AbsListView.LayoutParams(AbsListView.LayoutParams.MATCH_PARENT, AbsListView
-                .LayoutParams.MATCH_PARENT);
+                .LayoutParams.WRAP_CONTENT);
         //如果attrs不为空，就从xml布局文件中获取自定义attrs参数
         if (null != attrs) {
             TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GridViewPager);
             pageSize = ta.getInteger(R.styleable.GridViewPager_page_size, 4);
             numColumns = ta.getInteger(R.styleable.GridViewPager_num_columns, 4);
-            verticalSpacing = ta.getDimensionPixelSize(R.styleable
-                    .GridViewPager_vertical_spacing, 2);
-            horizontalSpacing = ta.getDimensionPixelSize(R.styleable
-                    .GridViewPager_horizontal_spacing, 2);
+            verticalSpacing = (int) ta.getDimension(R.styleable
+                    .GridViewPager_vertical_spacing, 0.5f);
+            horizontalSpacing = (int) ta.getDimension(R.styleable
+                    .GridViewPager_horizontal_spacing, 0.5f);
             scrollBarEnable = ta.getBoolean(R.styleable.GridViewPager_scroll_bar_enable,
-                    true);
-            paddingTopBottom = ta.getDimensionPixelSize(R.styleable
-                    .GridViewPager_padding_top_bottom, 0);
-            paddingLeftRight = ta.getDimensionPixelSize(R.styleable
-                    .GridViewPager_padding_left_right, 0);
+                    false);
             ta.recycle();
         }
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int height = 0;
+        //下面遍历所有child的高度
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            child.measure(widthMeasureSpec, MeasureSpec.makeMeasureSpec(0, MeasureSpec
+                    .UNSPECIFIED));
+            int h = child.getMeasuredHeight();
+            if (h > height) //采用最大的view的高度。
+                height = h;
+        }
+
+        heightMeasureSpec = MeasureSpec.makeMeasureSpec(height,
+                MeasureSpec.EXACTLY);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     /**
@@ -100,8 +108,7 @@ public class GridViewPager extends ViewPager {
         itemCount = adapter.getCount();
 
         if (itemCount <= 0) {
-            ToastUtils.toastShort(getContext(), R.string.item_count_error);
-            return;
+            throw new RuntimeException("条目总数必须大于0");
         }
 
         //给ViewPager设置适配器
@@ -140,28 +147,40 @@ public class GridViewPager extends ViewPager {
         this.pageSize = pageSize;
     }
 
+    public int getPageSize() {
+        return pageSize;
+    }
+
     public void setNumColumns(int numColumns) {
         this.numColumns = numColumns;
+    }
+
+    public int getNumColumns() {
+        return numColumns;
     }
 
     public void setVerticalSpacing(int verticalSpacing) {
         this.verticalSpacing = verticalSpacing;
     }
 
+    public int getVerticalSpacing() {
+        return verticalSpacing;
+    }
+
     public void setHorizontalSpacing(int horizontalSpacing) {
         this.horizontalSpacing = horizontalSpacing;
     }
 
-    public void setPaddingTopBottom(int paddingTopBottom) {
-        this.paddingTopBottom = paddingTopBottom;
-    }
-
-    public void setPaddingLeftRight(int paddingLeftRight) {
-        this.paddingLeftRight = paddingLeftRight;
+    public int getHorizontalSpacing() {
+        return horizontalSpacing;
     }
 
     public void setScrollBarEnable(boolean scrollBarEnable) {
         this.scrollBarEnable = scrollBarEnable;
+    }
+
+    public boolean isScrollBarEnable() {
+        return scrollBarEnable;
     }
 
     //获取总页数
@@ -195,7 +214,7 @@ public class GridViewPager extends ViewPager {
 
         @Override
         public Object instantiateItem(ViewGroup container, final int position) {
-            GridView gv = new GridView(getContext());
+            TotalDisplayGridView gv = new TotalDisplayGridView(getContext());
             //设置布局参数
             gv.setLayoutParams(mParams);
             //如果禁用了ScrollBar，就设置禁用，否则就保持默认
@@ -204,15 +223,10 @@ public class GridViewPager extends ViewPager {
             }
             //设置每行条目数量
             gv.setNumColumns(numColumns);
-            //设置每个GridView内边距
-            gv.setPadding((int) DensityUtils.dp2px(getContext(), paddingLeftRight),
-                    (int) DensityUtils.dp2px(getContext(), paddingTopBottom),
-                    (int) DensityUtils.dp2px(getContext(), paddingLeftRight),
-                    (int) DensityUtils.dp2px(getContext(), paddingTopBottom));
             //设置垂直间距
-            gv.setVerticalSpacing((int) DensityUtils.dp2px(getContext(), verticalSpacing));
+            gv.setVerticalSpacing(DensityUtils.dp2px(getContext(), verticalSpacing));
             //设置水平间距(设置padding后该值可能无效)
-            gv.setHorizontalSpacing((int) DensityUtils.dp2px(getContext(), horizontalSpacing));
+            gv.setHorizontalSpacing(DensityUtils.dp2px(getContext(), horizontalSpacing));
             //将GrindView添加到container中
             container.addView(gv);
             //设置Tag，在getItemPosition中使用

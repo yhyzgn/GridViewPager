@@ -3,7 +3,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <declare-styleable name="GridViewPager"><attr format="integer" name="page_size"/><attr format="integer" name="num_columns"/><attr format="dimension" name="vertical_spacing"/><attr format="dimension" name="horizontal_spacing"/><attr format="boolean" name="scroll_bar_enable"/><attr format="dimension" name="padding_top_bottom"/><attr format="dimension" name="padding_left_right"/></declare-styleable>
+    <declare-styleable name="GridViewPager"><attr format="integer" name="page_size"/><attr format="integer" name="num_columns"/><attr format="dimension" name="vertical_spacing"/><attr format="dimension" name="horizontal_spacing"/><attr format="boolean" name="scroll_bar_enable"/></declare-styleable>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <string name="app_name">GridViewPager</string>

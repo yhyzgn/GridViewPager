@@ -27,26 +27,6 @@ theme attribute (in the form
 containing a value of this type.
          */
         public static int num_columns=0x7f010001;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static int padding_left_right=0x7f010006;
-        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-         */
-        public static int padding_top_bottom=0x7f010005;
         /** <p>Must be an integer value, such as "<code>100</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -104,23 +84,19 @@ containing a value of this type.
            <tr><th>Attribute</th><th>Description</th></tr>
            <tr><td><code>{@link #GridViewPager_horizontal_spacing com.yhy.gvp:horizontal_spacing}</code></td><td></td></tr>
            <tr><td><code>{@link #GridViewPager_num_columns com.yhy.gvp:num_columns}</code></td><td></td></tr>
-           <tr><td><code>{@link #GridViewPager_padding_left_right com.yhy.gvp:padding_left_right}</code></td><td></td></tr>
-           <tr><td><code>{@link #GridViewPager_padding_top_bottom com.yhy.gvp:padding_top_bottom}</code></td><td></td></tr>
            <tr><td><code>{@link #GridViewPager_page_size com.yhy.gvp:page_size}</code></td><td></td></tr>
            <tr><td><code>{@link #GridViewPager_scroll_bar_enable com.yhy.gvp:scroll_bar_enable}</code></td><td></td></tr>
            <tr><td><code>{@link #GridViewPager_vertical_spacing com.yhy.gvp:vertical_spacing}</code></td><td></td></tr>
            </table>
            @see #GridViewPager_horizontal_spacing
            @see #GridViewPager_num_columns
-           @see #GridViewPager_padding_left_right
-           @see #GridViewPager_padding_top_bottom
            @see #GridViewPager_page_size
            @see #GridViewPager_scroll_bar_enable
            @see #GridViewPager_vertical_spacing
          */
         public static final int[] GridViewPager = {
             0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006
+            0x7f010004
         };
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#horizontal_spacing}
@@ -152,38 +128,6 @@ containing a value of this type.
           @attr name com.yhy.gvp:num_columns
         */
         public static int GridViewPager_num_columns = 1;
-        /**
-          <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#padding_left_right}
-          attribute's value can be found in the {@link #GridViewPager} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.yhy.gvp:padding_left_right
-        */
-        public static int GridViewPager_padding_left_right = 6;
-        /**
-          <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#padding_top_bottom}
-          attribute's value can be found in the {@link #GridViewPager} array.
-
-
-          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
-Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
-in (inches), mm (millimeters).
-<p>This may also be a reference to a resource (in the form
-"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
-theme attribute (in the form
-"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
-containing a value of this type.
-          @attr name com.yhy.gvp:padding_top_bottom
-        */
-        public static int GridViewPager_padding_top_bottom = 5;
         /**
           <p>This symbol is the offset where the {@link com.yhy.gvp.R.attr#page_size}
           attribute's value can be found in the {@link #GridViewPager} array.

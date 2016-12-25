@@ -6,7 +6,6 @@ import android.widget.Toast;
 /**
  * Created by Administrator on 2016/10/16.
  */
-
 public class ToastUtils {
     private ToastUtils() {
     }
@@ -20,10 +19,12 @@ public class ToastUtils {
     }
 
     public static void toastShort(Context ctx, int resId) {
-        Toast.makeText(ctx.getApplicationContext(), ctx.getResources().getString(resId), Toast.LENGTH_SHORT).show();
+        Toast.makeText(ctx.getApplicationContext(), ctx.getResources().getString(resId), Toast
+                .LENGTH_SHORT).show();
     }
 
     public static void toastLong(Context ctx, int resId) {
-        Toast.makeText(ctx.getApplicationContext(), ctx.getResources().getString(resId), Toast.LENGTH_LONG).show();
+        Toast.makeText(ctx.getApplicationContext(), ctx.getResources().getString(resId), Toast
+                .LENGTH_LONG).show();
     }
 }

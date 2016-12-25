@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="GridViewPager">
-        <attr name="page_size" format="integer" />
-        <attr name="num_columns" format="integer" />
-        <attr name="vertical_spacing" format="dimension" />
-        <attr name="horizontal_spacing" format="dimension" />
-        <attr name="scroll_bar_enable" format="boolean" />
-        <attr name="padding_top_bottom" format="dimension" />
-        <attr name="padding_left_right" format="dimension" />
+        <!--每页显示数量，默认为：4-->
+        <attr name="page_size" format="integer"/>
+        <!--每页显示列数，默认为：4-->
+        <attr name="num_columns" format="integer"/>
+        <!--条目之间垂直方向的间距，默认为：0.5dp-->
+        <attr name="vertical_spacing" format="dimension"/>
+        <!--条目之间水平方向的间距，默认为：0.5dp-->
+        <attr name="horizontal_spacing" format="dimension"/>
+        <!--是否显示GridView的滚动条，默认为：false(不显示)-->
+        <attr name="scroll_bar_enable" format="boolean"/>
     </declare-styleable>
 </resources>
