@@ -29,4 +29,5 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile project(':gvp')
+//    compile 'com.yhy:gvp:1.0.1@aar'
 }
