@@ -5,7 +5,7 @@
 
 ### Eclipse
 
-> 添加项目依赖；也可以下载`/GridViewPager/gvp/`目录下的<a href="/GridViewPager/gvp/gvp.aar">gvp.aar</a>，解压引用里边的`classes.jar`库
+> 添加项目依赖；也可以下载`/GridViewPager/gvp/`目录下的<a href="gvp/gvp.aar">gvp.aar</a>，解压引用里边的`classes.jar`库
 
 ### Android Studio (Gradle)
 
