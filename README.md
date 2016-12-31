@@ -1,5 +1,5 @@
 # GridViewPager
-![GridViewPager](https://img.shields.io/badge/GridViewPager-1.0.2-brightgreen.svg) ViewPager结合GridView，轻松实现类似表情面板的控件。可自由定制Item布局，提供充足的自定义参数等。效果如下：
+![GridViewPager](https://img.shields.io/badge/GridViewPager-1.0.2-brightgreen.svg) ViewPager结合GridView，轻松实现类似表情面板的控件。可自由定制Item布局，提供充足的自定义参数等。也处理了条目点击事件和条目长按事件。效果如下：
 
 ![ScreenShots](imgs/screenshots.gif)
 
@@ -148,4 +148,4 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
 
 ------------------------------------------------------------------
 
-就这样吧，不喜勿喷哦。。​:joy:​​:joy:​
+就这样吧，不喜勿喷哦。。:joy::joy:
