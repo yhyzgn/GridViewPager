@@ -19,7 +19,7 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
 
 ### Android Studio (Gradle)
 
-> 库依赖和aar包引用可参考Eclipse使用方式，如果使用Gradle依赖的话请参考下面第一、二步
+> 库依赖和aar包引用可参考Eclipse使用方式，如果使用Gradle依赖的话请参考下面第一步
 
 * 第一步，在Module的`builder.gradle`中添加依赖（把`latestVersion`替换成第一行徽章中的版本号）
 
@@ -75,7 +75,7 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
   * 第四步，在代码中通过`findViewById`获取到`GridViewPager`控件，设置适配器
 
     ```java
-    gvpContent.setGVPAdapter(new GridViewPager.GVPAdapter() {
+    gvpContentA.setGVPAdapter(new GridViewPager.GVPAdapter() {
     private AbsListView.LayoutParams params = new AbsListView.LayoutParams
       (imgWidthHeight, imgWidthHeight);
 
@@ -109,14 +109,14 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
   * 第五步，设置相关事件（点击事件和长按事件）
 
     ```java
-    gvpContent.setOnItemClickListener(new GridViewPager.OnItemClickListener() {
+    gvpContentA.setOnItemClickListener(new GridViewPager.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position) {
         ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被点击");
       }
     });
 
-    gvpContent.setOnItemLongClickListener(new GridViewPager.OnItemLongClickListener() {
+    gvpContentA.setOnItemLongClickListener(new GridViewPager.OnItemLongClickListener() {
       @Override
       public boolean onItemLongClick(AdapterView<?> parent, View view, int position) {
         ToastUtils.toastShort(MainActivity.this, "第" + position + "个条目被长按");
@@ -148,5 +148,4 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
 
 ------------------------------------------------------------------
 
-就这样吧，不喜勿喷哦。。^_^ ···
-
+就这样吧，不喜勿喷哦。。​:joy:​​:joy:​
