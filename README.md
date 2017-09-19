@@ -32,14 +32,14 @@ Demo下载地址：<a href="https://fir.im/gvpmg2w">GridViewPager</a> ，或者�
   * 添加控件布局代码及相关配置参数
 
     ```xml
-    	<!-- 自定义属性 -->
-    	<com.yhy.gvp.widget.GridViewPager
-            android:id="@+id/gvp_content_a"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            app:num_columns="4"
-            app:page_size="8" />
+    <!-- 自定义属性 -->
+    <com.yhy.gvp.widget.GridViewPager
+      android:id="@+id/gvp_content_a"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="120dp"
+      app:num_columns="4"
+      app:page_size="8" />
     ```
 
   * 测试数据
