@@ -2,6 +2,7 @@ package com.yhy.gvp.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
@@ -21,7 +22,7 @@ import com.yhy.gvp.adapter.GVPAdapter;
  * version: 1.0.0
  * desc   : 整个控件
  */
-public class GridViewPager extends ViewPager {
+public class GridViewPager extends ViewPager implements GVPAdapter.OnDataChangedListener {
     // 条目总数
     private int mItemCount;
     // 每页显示条目数量
@@ -32,6 +33,8 @@ public class GridViewPager extends ViewPager {
     private int mPageCount;
     // ViewPager的适配器对象
     private PageAdapter mPageAdapter;
+    // 适配器
+    private GVPAdapter mAdapter;
 
     public GridViewPager(Context context) {
         this(context, null);
@@ -68,6 +71,8 @@ public class GridViewPager extends ViewPager {
         if (null == adapter) {
             throw new IllegalArgumentException("适配器不能为空");
         }
+        mAdapter = adapter;
+
         // 从适配器中获取条目总数
         mItemCount = adapter.getCount();
 
@@ -76,17 +81,21 @@ public class GridViewPager extends ViewPager {
         }
 
         // 给ViewPager设置适配器
-        mPageAdapter = new PageAdapter(adapter);
+        mPageAdapter = new PageAdapter();
         setAdapter(mPageAdapter);
+
+        // 绑定
+        mAdapter.bindGridViewPager(this);
     }
 
     /**
      * 刷新适配器数据
+     * <p>
+     * {@link GVPAdapter.OnDataChangedListener#onDataChanged()}
      */
+    @Deprecated
     public void notifyDataSetChanged() {
-        if (null != mPageAdapter) {
-            mPageAdapter.notifyDataSetChanged();
-        }
+        onDataChanged();
     }
 
     /**
@@ -134,15 +143,17 @@ public class GridViewPager extends ViewPager {
         return mPageCount;
     }
 
+    @Override
+    public void onDataChanged() {
+        if (null != mPageAdapter) {
+            mPageAdapter.notifyDataSetChanged();
+        }
+    }
+
     /**
      * ViewPager的适配器
      */
     private class PageAdapter extends PagerAdapter {
-        private GVPAdapter mAdapter;
-
-        public PageAdapter(GVPAdapter adapter) {
-            this.mAdapter = adapter;
-        }
 
         @Override
         public int getCount() {
@@ -221,19 +232,20 @@ public class GridViewPager extends ViewPager {
          * @param adapter 具体的自定义适配器
          * @param index   页码
          */
-        public GVAdapter(GVPAdapter<T> adapter, int index) {
+        GVAdapter(GVPAdapter<T> adapter, int index) {
             this.mAdapter = adapter;
             this.mIndex = index;
         }
 
+        @NonNull
         @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(mAdapter.getLayoutId(), null);
             return new Holder(view);
         }
 
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
             // 计算item索引
             int index = mIndex * mPageSize + position;
             // 设置索引值到tag

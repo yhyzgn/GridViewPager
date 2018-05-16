@@ -16,11 +16,11 @@ allprojects {
 }
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion 27
+
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
     }
     buildTypes {
         release {
@@ -35,17 +35,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:support-v4:26.+'
-    compile 'com.android.support:recyclerview-v7:26.+'
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:support-v4:27.1.0'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
 }
 
 publish {
     userOrg = 'yhyzgn'
     groupId = 'com.yhy'
     artifactId = 'gvp'
-    publishVersion = '1.1.0'
+    publishVersion = '1.1.1'
     desc = 'A component that ViewPager contains some RecyclerView, you can custom the Attributes what you need.'
     website = 'https://github.com/yhyzgn/GridViewPager'
 }

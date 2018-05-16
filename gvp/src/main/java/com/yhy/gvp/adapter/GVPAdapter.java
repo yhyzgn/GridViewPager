@@ -5,6 +5,7 @@ import android.view.View;
 
 import com.yhy.gvp.listener.OnItemClickListener;
 import com.yhy.gvp.listener.OnItemLongClickListener;
+import com.yhy.gvp.widget.GridViewPager;
 
 import java.util.List;
 
@@ -23,6 +24,8 @@ public abstract class GVPAdapter<T> {
     private int mLayoutId;
     // 数据集合
     private List<T> mDataList;
+    // 绑定的GridViewPager
+    private GridViewPager mView;
     // 分割线
     private RecyclerView.ItemDecoration mItemDecoration;
     // item点击事件
@@ -33,6 +36,15 @@ public abstract class GVPAdapter<T> {
     public GVPAdapter(int layoutId, List<T> dataList) {
         this.mLayoutId = layoutId;
         this.mDataList = dataList;
+    }
+
+    /**
+     * 绑定GridViewPager
+     *
+     * @param gvp GridViewPager
+     */
+    public void bindGridViewPager(GridViewPager gvp) {
+        mView = gvp;
     }
 
     /**
@@ -139,5 +151,25 @@ public abstract class GVPAdapter<T> {
      */
     public void setOnItemLongClickListener(OnItemLongClickListener<T> listener) {
         mOnItemLongClickListener = listener;
+    }
+
+    /**
+     * 刷新适配器数据
+     */
+    public void notifyDataSetChanged() {
+        if (null != mView) {
+            mView.onDataChanged();
+        }
+    }
+
+    /**
+     * 数据变化监听事件
+     */
+    public interface OnDataChangedListener {
+
+        /**
+         * 数据变化时回调
+         */
+        void onDataChanged();
     }
 }

@@ -13,7 +13,7 @@ import com.yhy.gvp.adapter.GVPAdapter;
 import com.yhy.gvp.listener.OnItemClickListener;
 import com.yhy.gvp.listener.OnItemLongClickListener;
 import com.yhy.gvp.widget.GridViewPager;
-import com.yhy.widget.rv.div.RvDivider;
+import com.yhy.widget.core.recycler.div.RvDivider;
 
 import java.util.ArrayList;
 import java.util.List;
